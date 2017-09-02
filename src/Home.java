@@ -1421,7 +1421,7 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             saveSreenshot(PanelStudentInfo, "Panel img.png");
-            JOptionPane.showMessageDialog(null, "capure saved");
+            JOptionPane.showMessageDialog(null, "capture saved");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -1431,8 +1431,12 @@ public class Home extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String path = f.getAbsolutePath();
-        textImageUpload.setText(path);
+        try {
+            String path = f.getAbsolutePath();
+            textImageUpload.setText(path);
+        } catch (Exception e) {
+        }
+        
 //        textImageUpload.setPreferredSize(new Dimension(10, 23));
         try {
             FileInputStream fi = new FileInputStream(f);
